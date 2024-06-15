@@ -75,7 +75,7 @@
                                 aria-labelledby="hs-dropdown-with-header">
                                 <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-neutral-800">
                                     <p class="text-sm text-gray-500 dark:text-neutral-400">Signed in as</p>
-                                    <p class="text-sm font-medium text-gray-800 dark:text-neutral-300">{{ Auth::user()->name }}
+                                    <p class="text-sm font-medium text-gray-800 dark:text-neutral-300">{{ Auth::user()->email }}
                                     </p>
                                 </div>
                                 <div class="mt-2 py-2 first:pt-0 last:pb-0">

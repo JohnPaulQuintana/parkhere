@@ -7,7 +7,7 @@
             <!-- container -->
             <div class="bg-white rounded-md w-full p-2">
                 <div>
-                    <h1 class="mx-7">Available Establishment's</h1>
+                    <h1 class="mx-7 font-bold tracking-wider text-slate-700">Available Establishment's</h1>
                     <!-- Card Section -->
                     <div class="max-w-5xl px-4 py-4 mx-auto">
                         <!-- Grid -->
@@ -32,11 +32,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="absolute border p-2 bottom-0 w-full flex flex-wrap justify-center items-center gap-2">
+                                    <div class="absolute border py-2 bottom-0 w-full flex flex-wrap justify-center items-center gap-2">
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-circle-check text-green-500"></i> {{ __('active') }}</span>
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-square-parking text-violet-500"></i> {{ $e->parking_space_count }}</span>
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-peso-sign text-violet-500"></i> {{ $e->parking_price }}</span>
-                                        <a href="#" class="bg-violet-500 hover:bg-violet-700 rounded-md p-1 font-bold text-white">{{ __('Book now') }}</a>
+                                        <a href="#" class="bg-violet-500 hover:bg-violet-700 rounded-md p-1 font-bold text-white">{{ __('Book now!') }}</a>
                                     </div>
                                 </div>
                                 <!-- End Card -->
