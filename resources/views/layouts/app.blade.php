@@ -25,7 +25,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased relative">
     <div class="min-h-screen bg-gray-100">
         {{-- @include('layouts.navigation') --}}
 
@@ -140,6 +140,31 @@
     </div>
     <!-- End Breadcrumb -->
 
+    <!-- Loader Modal -->
+    <div id="loader-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[999] hidden">
+        <div class="min-h-60 w-full h-full flex flex-col shadow-sm">
+            <div class="flex flex-auto flex-col justify-center items-center">
+                <div class="flex flex-col gap-5 justify-center items-center rounded-md bg-slate-800 bg-opacity-50 p-5">
+                    <div class="w-full">
+                        <!-- Logo -->
+                        <a class="flex items-center justify-center text-white bg-slate-600 bg-opacity-50 p-2 rounded-xl text-3xl font-semibold focus:outline-none focus:opacity-80"
+                            href="../templates/admin/index.html" aria-label="Preline">
+                            <i class="fa-sharp fa-solid fa-square-parking text-violet-500"></i>arkHere
+                        </a>
+                        <!-- End Logo -->
+                    </div>
+                    <div class="animate-spin inline-block w-[100px] h-[100px] border-[8px] border-current border-t-transparent text-violet-600 rounded-full dark:text-blue-500" role="status" aria-label="loading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="bg-slate-600 bg-opacity-50 text-white p-1 rounded-md">
+                        Processing your request!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Loader Modal -->
+
     <!-- Sidebar -->
     @include('layouts.sidebar')
     <!-- End Sidebar -->
@@ -151,6 +176,26 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     @yield('scripts')
+
+    <script>
+        $(document).ready(function(){
+            function makeAjaxRequest() {
+                $.ajax({
+                    url: "{{ route('calculate.every.hour') }}", // Route to your Laravel route
+                    type: "GET",
+                    success: function(response) {
+                        console.log(response.message); // Log the success message
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error); // Log any errors
+                    }
+                });
+            }
+
+            // Run the AJAX request every hour
+            setInterval(makeAjaxRequest, 3600000); // 3600000 milliseconds = 1 hour
+        })
+    </script>
 </body>
 
 </html>

@@ -7,7 +7,30 @@
             <!-- container -->
             <div class="bg-white rounded-md w-full p-2">
                 <div>
-                    <h1 class="mx-7 font-bold tracking-wider text-slate-700">Available Establishment's</h1>
+                    <div class="flex items-center">
+                        <h1 class="mx-7 font-bold tracking-wider text-slate-700 flex items-center gap-2">
+                            
+                            Available Establishment's
+                            <div class="hs-tooltip">
+                                <div class="hs-tooltip-toggle">
+                                    <svg class="flex-shrink-0 size-4 text-gray-500 dark:text-neutral-500"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                        <path d="M12 17h.01" />
+                                    </svg>
+                                    <span
+                                        class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
+                                        role="tooltip">
+                                        The price per hour basis
+                                    </span>
+                                </div>
+                            </div>
+                        </h1>
+                        
+                    </div>
                     <!-- Card Section -->
                     <div class="max-w-5xl px-4 py-4 mx-auto">
                         <!-- Grid -->
@@ -36,7 +59,7 @@
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-circle-check text-green-500"></i> {{ __('active') }}</span>
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-square-parking text-violet-500"></i> {{ $e->parking_space_count }}</span>
                                         <span class="bg-slate-100 rounded-md p-1 font-bold text-slate-700"><i class="fa-solid fa-peso-sign text-violet-500"></i> {{ $e->parking_price }}</span>
-                                        <a href="#" class="bg-violet-500 hover:bg-violet-700 rounded-md p-1 font-bold text-white">{{ __('Book now!') }}</a>
+                                        <a href="{{ route('user.dashboard.parking.booked', $e->id) }}" class="bg-violet-500 hover:bg-violet-700 rounded-md p-1 font-bold text-white">{{ __('Book now!') }}</a>
                                     </div>
                                 </div>
                                 <!-- End Card -->

@@ -12,7 +12,7 @@
                     Establishment Record
                 </h1>
                 <!-- Input -->
-              <div class="sm:col-span-1">
+              {{-- <div class="sm:col-span-1">
                 <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
                 <div class="relative">
                   <input type="text" id="hs-as-table-product-review-search" name="hs-as-table-product-review-search" class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Search">
@@ -22,7 +22,7 @@
                     </svg>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <!-- End Input -->
   
               <div class="sm:col-span-2 md:grow">
@@ -35,7 +35,7 @@
                     
                   </div>
   
-                  <div class="hs-dropdown relative inline-block [--placement:bottom-right]' data-hs-dropdown-auto-close="inside">
+                  {{-- <div class="hs-dropdown relative inline-block [--placement:bottom-right]' data-hs-dropdown-auto-close="inside">
                     <button id="hs-as-table-table-filter-dropdown" type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
                       <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
                       Filter
@@ -57,13 +57,10 @@
                           <input type="checkbox" class="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-as-filters-dropdown-pending">
                           <span class="ms-3 text-sm text-gray-800 dark:text-neutral-200">In-Active</span>
                         </label>
-                        {{-- <label for="hs-as-filters-dropdown-declined" class="flex py-2.5 px-3">
-                          <input type="checkbox" class="shrink-0 mt-0.5 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-600 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-as-filters-dropdown-declined">
-                          <span class="ms-3 text-sm text-gray-800 dark:text-neutral-200">Declined</span>
-                        </label> --}}
+                        
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -90,6 +87,23 @@
                       <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                         Parking Space
                       </span>
+                      <div class="hs-tooltip">
+                        <div class="hs-tooltip-toggle">
+                            <svg class="flex-shrink-0 size-4 text-gray-500 dark:text-neutral-500"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                            <span
+                                class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
+                                role="tooltip">
+                                The number of total parking slot
+                            </span>
+                        </div>
+                    </div>
                     </div>
                   </th>
   
@@ -98,6 +112,23 @@
                       <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
                         Parking Price
                       </span>
+                      <div class="hs-tooltip">
+                        <div class="hs-tooltip-toggle">
+                            <svg class="flex-shrink-0 size-4 text-gray-500 dark:text-neutral-500"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                            <span
+                                class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
+                                role="tooltip">
+                                The price per hour basis
+                            </span>
+                        </div>
+                    </div>
                     </div>
                   </th>
 
@@ -147,7 +178,7 @@
                         </td>
                         <td class="size-px whitespace-nowrap">
                             <div class="px-6 py-2">
-                            <span class="text-sm text-gray-600 dark:text-neutral-400">{{ $e->parking_price }}</span>
+                            <span class="text-sm text-gray-600 dark:text-neutral-400">₱{{ $e->parking_price }} {{ __('hrs') }}</span>
                             </div>
                         </td>
                         <td class="size-px whitespace-nowrap">

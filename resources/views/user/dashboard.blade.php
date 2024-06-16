@@ -1,13 +1,13 @@
 <x-app-layout>
     <!-- ========== MAIN CONTENT ========== -->
     <!-- Breadcrumb -->
-    {{-- <div
+    <div
         class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-neutral-800 dark:border-neutral-700">
         <div class="flex justify-between items-center py-2">
             <!-- Breadcrumb -->
             <ol class="ms-3 flex items-center whitespace-nowrap">
                 <li class="flex items-center text-sm text-gray-800 dark:text-neutral-400">
-                    User
+                    Application Layout
                     <svg class="flex-shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-neutral-500"
                         width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
@@ -38,7 +38,7 @@
 
     <!-- Sidebar -->
     @include('layouts.sidebar')
-    <!-- End Sidebar --> --}}
+    <!-- End Sidebar -->
 
     <!-- Content -->
     <div class="w-full lg:ps-64">
@@ -66,7 +66,7 @@
                                     <span
                                         class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
                                         role="tooltip">
-                                        The number of daily users
+                                        The number of total users
                                     </span>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
 
                         <div class="mt-1 flex items-center gap-x-2">
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                                72,540
+                                {{ count($users) }}
                             </h3>
                             
                         </div>
@@ -88,13 +88,13 @@
                     <div class="p-4 md:p-5">
                         <div class="flex items-center gap-x-2">
                             <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-                                Establishment
+                                Parking Created
                             </p> 
                         </div>
 
                         <div class="mt-1 flex items-center gap-x-2">
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                                29
+                                {{ count($es) }}
                             </h3>
                         </div>
                     </div>
@@ -106,13 +106,67 @@
                     <div class="p-4 md:p-5">
                         <div class="flex items-center gap-x-2">
                             <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
-                                History 
+                                Cancelled Reservation
                             </p> 
                         </div>
 
                         <div class="mt-1 flex items-center gap-x-2">
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                                29
+                                {{ count($c) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Paid Reservation
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($p) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Pending Reservation
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($pp) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Total Parking Slot
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($ps) }}
                             </h3>
                         </div>
                     </div>

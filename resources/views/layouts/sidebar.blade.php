@@ -270,18 +270,12 @@
                 </li>
                 <li>
                     <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-                        href="#">
+                        href="{{ route('admin.reservation') }}">
                         <i class="fa-solid fa-cars flex-shrink-0 text-xl"></i>
-                        Book Request
+                        Reservation
                     </a>
                 </li>
-                <li>
-                    <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-                        href="#">
-                        <i class="fa-solid fa-cars flex-shrink-0 text-xl"></i>
-                        Officially Booked
-                    </a>
-                </li>
+            
                @else
                     <li>
                         <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:bg-neutral-700 dark:text-white"
@@ -301,9 +295,9 @@
                     </li>
                     <li>
                         <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300"
-                            href="#">
+                            href="{{ route('user.history') }}">
                             <i class="fa-solid fa-rectangle-history flex-shrink-0 text-xl"></i>
-                            History of parked
+                            Reservation Record
                         </a>
                     </li>
                     <li>

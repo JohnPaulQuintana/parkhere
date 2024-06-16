@@ -66,7 +66,7 @@
                                     <span
                                         class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-neutral-700"
                                         role="tooltip">
-                                        The number of daily users
+                                        The number of total users
                                     </span>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
 
                         <div class="mt-1 flex items-center gap-x-2">
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                                72,540
+                                {{ count($users) }}
                             </h3>
                             
                         </div>
@@ -94,7 +94,79 @@
 
                         <div class="mt-1 flex items-center gap-x-2">
                             <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                                29.4%
+                                {{ count($es) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Cancelled Reservation
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($c) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Paid Reservation
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($p) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Pending Reservation
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($pp) }}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Card -->
+                <!-- Card -->
+                <div
+                    class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                    <div class="p-4 md:p-5">
+                        <div class="flex items-center gap-x-2">
+                            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-neutral-500">
+                                Total Parking Slot
+                            </p> 
+                        </div>
+
+                        <div class="mt-1 flex items-center gap-x-2">
+                            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
+                                {{ count($ps) }}
                             </h3>
                         </div>
                     </div>

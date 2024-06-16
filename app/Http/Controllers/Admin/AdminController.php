@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booked;
 use App\Models\ParkingLot;
 use App\Models\ParkingSpace;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -12,7 +15,13 @@ class AdminController extends Controller
 {
     
     public function index(){
-        return view('dashboard');
+        $users = User::get();
+        $es = ParkingSpace::get();
+        $c = Booked::where('status','cancelled')->get();
+        $p = Booked::where('status','paid')->get();
+        $pp = Booked::where('status','pending')->get();
+        $ps = ParkingLot::get();
+        return view('dashboard', compact('users', 'es', 'c', 'p','pp','ps'));
     }
 
     public function establishment(){
@@ -62,5 +71,70 @@ class AdminController extends Controller
         }
         return Redirect::route('admin.establishment')->with(['status.save'=>'success', 'action'=>'update', 'updateModal'=>'open', 'establishment_id'=>$request->establishment_id]);
 
+    }
+
+    public function reservation(){
+        $reservation = Booked::with(['parkingLot.parkingSpace','totalCharge','user'])->get();
+        // dd($reservation);
+        return view('pages.reservation', compact('reservation'));
+    }
+
+    public function reservationPaid(Request $request){
+        // dd($request);
+        $booked = Booked::with(['totalCharge'])->find($request->booked_id);
+        // dd($booked);
+        $booked->status = 'paid';
+        $booked->save();
+        if($booked->totalCharge){
+            $booked->totalCharge->update(['status'=>'paid']);
+
+            return Redirect::route('admin.reservation')->with(['reservation.status'=>'paid']);
+        }
+    }
+
+
+    public function updateTotalCharge()
+    {
+        $booked = Booked::with('totalCharge')->where('status','pending')->get();
+         foreach ($booked as $k => $b) {
+             // Assuming 'starting_time' and 'end_time' are stored as TIME type in MySQL
+            $starting_time = Carbon::createFromFormat('H:i:s', $b->starting_time); // Create Carbon instance from TIME type
+            $end_time = Carbon::createFromFormat('H:i:s', $b->end_time); // Create Carbon instance from TIME type
+            $currentDateTime = Carbon::now();
+           // Format the current time to match 'H:i:s' format
+            // $currentTime = $currentDateTime->format('H:i:s');
+             // Check if current time is less than end time, use current time in that case
+            
+            $result = $this->calculateTotalCharge($starting_time, $end_time, $currentDateTime, $b->price);
+            // dd($booked);
+            if($b->totalCharge){
+                $b->totalCharge->update([
+                    'status'=>'unpaid',
+                    'total'=>$result,
+                ]);
+            }
+            
+         }
+        
+    }
+
+    private function calculateTotalCharge($startTime, $endTime, $currentTime, $ratePerHour)
+    {
+        if ($currentTime->lessThan($endTime)) {
+            $endTimeToUse = $currentTime;
+            // dd('yes');
+        } else {
+            $endTimeToUse = $endTime;
+            // dd('no');
+        }
+
+        // Calculate the difference in hours, ignoring minutes and seconds
+        $hoursDifference = round($startTime->diffInHours($endTimeToUse, false));
+        // dd($hoursDifference);
+
+        // Calculate the total charge
+        $totalCharge = $hoursDifference * $ratePerHour;
+
+        return $totalCharge;
     }
 }
