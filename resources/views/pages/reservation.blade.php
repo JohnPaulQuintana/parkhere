@@ -101,7 +101,7 @@
                                 alert('yes')
                                 popup('Verification Success!',`Welcome to ${data.establishment}, ${data.name}. Your car safety is our priority, have a blessed day!`, 'success')
                             }else{
-                                alert('no')
+                                popup('Verification Failed!',`This QRCODE is not matched on our records. Your car safety is our priority, have a blessed day!`, 'error')
                             }
                         }, 
                         (error)=>{

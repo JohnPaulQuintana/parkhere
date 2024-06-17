@@ -73,6 +73,43 @@ class AdminController extends Controller
 
     }
 
+    public function establishmentUpdateEs(Request $request){
+        // dd($request);
+        $es = ParkingSpace::with('parkinglot')->find($request->es_id);
+        // dd($es);
+        if($es){
+            $es->stablishment_name = $request->establishment_name;
+            $es->stablishment_desciption = $request->establishment_description;
+            $es->parking_space_count = $request->establishment_slot;
+            $es->parking_price = $request->parking_price;
+            $es->parking_starting_name = $request->parking_starting_name;
+            $es->save();
+
+            if($es->parkinglot){
+                foreach ($es->parkinglot as $key => $value) {
+                    // dd($value->slot);
+                    $value->slot = $es->parking_starting_name.'-'.$key+1;
+                    $value->save();
+                    // dd($value->slot);
+                    
+                }
+                return Redirect::route('admin.establishment')->with(['status.save'=>'success', 'action'=>'es', 'updateModal'=>'close', 'establishment_id'=>$request->es_id]);
+
+            }
+        }
+
+    }
+
+    public function establishmentDestroy(Request $request){
+        // dd($request->id);
+        $es = ParkingSpace::find($request->id);
+        if($es){
+            $es->delete();
+            return Redirect::route('admin.establishment')->with(['status.save'=>'success', 'action'=>'delete', 'updateModal'=>'close', 'establishment_id'=>$request->id]);
+
+        }
+    }
+
     public function reservation(){
         $reservation = Booked::with(['parkingLot.parkingSpace','totalCharge','user'])->get();
         // dd($reservation);

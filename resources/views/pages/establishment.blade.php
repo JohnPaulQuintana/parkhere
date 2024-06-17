@@ -9,6 +9,7 @@
 
                 @include('pages.tables.table', ['establishments'=>$establishments])
                 @include('pages.modal.create')
+                @include('pages.modal.edit')
                 @include('pages.modal.parkinglot')
 
             </div>
@@ -32,8 +33,11 @@
                     popup('Parking Space Updated','Parking space is successfully updated!, customized the parking space success.',success);
                     renderParkingSpace(data,parseInt(establishment_id))
                     $('#parkingLotModalBtn').trigger('click');
+                }else if(action === 'es'){
+                    popup('Establishment Updated','Establishment is successfully updated!, customized the parking space success.',success);
+                }else if(action === 'delete'){
+                    popup('Establishment Deleted Successfully','Establishment is successfully deleted!, customized the parking space success.',success);
                 }
-
                 // create establishment
                 $('#hs-create').click(function(){
                     $('#createModalBtn').trigger('click');
@@ -48,6 +52,25 @@
                     let id = $(this).data('id')
                     renderParkingSpace(data,id)
                     $('#parkingLotModalBtn').trigger('click');
+                })
+
+                //edit
+                $('.editEs').click(function(){
+                    let id = $(this).data('id')
+                    let name = $(this).data('name')
+                    let des = $(this).data('description')
+                    let price = $(this).data('price')
+                    let slot = $(this).data('slot')
+                    let sname = $(this).data('sname')
+
+                    // alert(id)
+                    $('#es_id').val(id)
+                    $('#edit_name').val(name)
+                    $('#edit_description').val(des)
+                    $('#edit_price').val(price)
+                    $('#edit_slot').val(slot)
+                    $('#edit_sname').val(sname)
+                    $('#editModalBtn').trigger('click')
                 })
             })
 

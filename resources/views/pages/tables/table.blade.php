@@ -213,12 +213,21 @@
                                         <span class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-neutral-600">
                                             Options
                                         </span>
-                                        <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300" href="#">
+                                        <a 
+                                          data-id="{{ $e->id }}"
+                                          data-name="{{ $e->stablishment_name }}"
+                                          data-description="{{ $e->stablishment_desciption }}"
+                                          data-price="{{ $e->parking_price }}"
+                                          data-slot="{{ $e->parking_space_count }}"
+                                          data-sname="{{ $e->parking_starting_name }}"
+                                          class="editEs flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300" href="#">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             
                                             Edit
                                         </a>
-                                        <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-500 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300" href="#">
+                                        <a 
+                                        
+                                          class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-500 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300" href="{{ route('admin.establishment.destroy', $e->id) }}">
                                             <i class="fa-solid fa-square-minus"></i>
                                             Delete
                                         </a>

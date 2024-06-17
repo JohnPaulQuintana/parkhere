@@ -23,6 +23,8 @@ Route::group(['middleware' => ['auth','verified']], function () {
         Route::get('/establishment',[AdminController::class, 'establishment'])->name('establishment');
         Route::post('/establishment/store',[AdminController::class, 'establishmentStore'])->name('establishment.store');
         Route::post('/establishment/update',[AdminController::class, 'establishmentUpdate'])->name('establishment.update');
+        Route::post('/establishment/update/es',[AdminController::class, 'establishmentUpdateEs'])->name('establishment.update.es');
+        Route::get('/establishment/destroy/{id}',[AdminController::class, 'establishmentDestroy'])->name('establishment.destroy');
         Route::get('/reservation',[AdminController::class, 'reservation'])->name('reservation');
         Route::post('/reservation/paid',[AdminController::class, 'reservationPaid'])->name('reservation.paid');
     });
