@@ -9,9 +9,9 @@
         <div class="font-bold text-violet-500 text-4xl flex flex-col items-center bg-slate-100 p-2 rounded-md mb-4">
             <span><i class="fa-sharp fa-solid fa-square-parking tracking-wider"></i>arkHere</span>
             <p class="text-sm text-slate-700">Real-Time Parking Availability and Reservation System</p>
-            <span>Demo Account:</span>
-            <span>Username: admin@email.com, Password: password</span>
-            <span>Username: user@email.com, Password: password</span>
+            <span class="text-sm">Demo Account:</span>
+            <span class="text-sm">Username: admin@email.com, Password: password</span>
+            <span class="text-sm">Username: user@email.com, Password: password</span>
         </div>
 
 
